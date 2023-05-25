@@ -1,0 +1,8 @@
+-- CreateTable
+CREATE TABLE "authors" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NOT NULL,
+    "birth" DATETIME NOT NULL,
+    "bio" TEXT NOT NULL,
+    "createAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
