@@ -1,8 +1,11 @@
+import Footer from '@/components/Footer'
 import React from 'react'
 
 function Books() {
   return (
-    <div>Books</div>
+    <div>Books
+      <Footer />
+    </div>
   )
 }
 
