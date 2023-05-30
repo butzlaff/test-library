@@ -1,24 +1,26 @@
-import fastify from "fastify";
-import { PrismaClient } from '@prisma/client'
+import fastify, { FastifyReply, FastifyRequest } from 'fastify';
+import { authorsRoutes } from './routes/authorsRoutes';
+import { booksRoutes } from './routes/booksRoutes';
+import cors from '@fastify/cors';
 
 const app = fastify();
 
-const appData = {
-  port: 3333,
-  host: '0.0.0.0',
-}
+app.register(cors, {
+  origin: ['http://localhost:3000'],
+});
 
-const prisma = new PrismaClient();
+app.register(authorsRoutes);
+app.register(booksRoutes);
 
-app.get('/authors', async() => {
-  const author = await prisma.authors.findMany();
+app.setErrorHandler((error, req: FastifyRequest, res: FastifyReply) => {
+  console.log(error);
+  res.status(500).send({ error: 'Something went wrong' });
+});
 
-  return author;
-})
+app
+  .listen({    port: 3333,    host: '0.0.0.0'  })
+  .then(() => {
+    console.log('📚 HTTP server running on HTTP://localhost:3333');
+  })
 
-
-app.listen({
-  port: 3333,
-}).then(() => {
-  console.log('HTTP server running on HTTP://localhost:3333')
-})
+;
