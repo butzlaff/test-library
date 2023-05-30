@@ -2,8 +2,8 @@
 import { api } from "@/lib/api";
 import { FormEvent, useState } from "react";
 import styles from './authors.module.css'
-import Table from "@/components/Table";
 import Footer from "@/components/Footer";
+import TableAuthors from "@/components/TableAuthors";
 
 interface TargetChange {
   name: string;
@@ -65,7 +65,7 @@ function Authors() {
       </div>
       <div>
         <button onClick={ handleViewAuthors }>Exibir autores cadastrados</button>
-        { authorsList && <Table authors={ authorsList } /> }
+        { authorsList && <TableAuthors authors={ authorsList } /> }
       </div>
       <Footer />
     </main>

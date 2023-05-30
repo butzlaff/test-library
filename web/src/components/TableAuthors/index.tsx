@@ -11,7 +11,7 @@ interface Author {
 interface TableProps {
   authors: Author[];
 }
-const Table: React.FC<TableProps> = ({ authors }) => {
+const TableAuthors: React.FC<TableProps> = ({ authors }) => {
   return (
     <table>
         <thead>
@@ -46,4 +46,4 @@ const Table: React.FC<TableProps> = ({ authors }) => {
   )
 }
 
-export default Table;
+export default TableAuthors;
