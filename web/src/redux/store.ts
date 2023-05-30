@@ -2,7 +2,6 @@
 
 import { configureStore } from '@reduxjs/toolkit';
 import bookReducer from './reducers/reducer';
-import { type } from 'os';
 
 export const store = configureStore({
   reducer: {

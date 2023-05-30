@@ -56,17 +56,7 @@ function Books() {
         author: filteredAuthors[0]?.name,
       });
     }
-  }, [
-    authors,
-    book.authors,
-    book.category,
-    book.description,
-    book.id,
-    book.launchDate,
-    book.name,
-    edit,
-    filteredAuthors,
-  ]);
+  }, [authors]);
 
   const handleChange = (
     event:
@@ -171,79 +161,105 @@ function Books() {
   };
 
   return (
-    <div className={styles.mainBooks}>
-      <label>Books</label>
-      <form
-        onSubmit={edit ? handleEditBook : handleCreateBook}
-        className={styles.mainForm}
-      >
-        <label>
-          Nome:{' '}
-          <input
-            type="text"
-            name="name"
-            onChange={handleChange}
-            value={books.name}
-          />
-        </label>
-        <label>
-          Data de lançamento:{' '}
-          <input
-            type="date"
-            name="launchDate"
-            onChange={handleChange}
-            value={books.launchDate}
-          />
-        </label>
-        <label>
-          Categoria:{' '}
-          <input
-            type="text"
-            name="category"
-            onChange={handleChange}
-            value={books.category}
-          />
-        </label>
-        <label>
-          Descrição:{' '}
-          <textarea
-            minLength={1}
-            maxLength={500}
-            name="description"
-            onChange={handleChange}
-            value={books.description}
-          />
-        </label>
-        <label>Autores: </label>
-        <select onChange={handleChange} value={books.author} name="author">
-          {filteredAuthors &&
-            filteredAuthors?.map(({ id, name }) => (
-              <option key={id} value={name}>
-                {name}
-              </option>
-            ))}
-        </select>
-        <button type="button" onClick={handleAuthor}>
-          Adicionar Autor
-        </button>
-        <table>
-          <thead>
-            <tr>
-              <th>Autores selecionados</th>
-            </tr>
-          </thead>
-          <tbody>
-            {authorList?.map((author) => (
-              <tr key={author}>
-                <td>{author}</td>
+    <div className="flex flex-col items-center justify-center">
+      <h1 className="w-screen bg-gray-300 p-5 text-center text-5xl font-bold">
+        Books
+      </h1>
+      <div className="flex w-1/3 flex-col items-center justify-center bg-green-200 p-5">
+        <form
+          className="flex w-full flex-col items-center justify-center gap-3"
+          onSubmit={edit ? handleEditBook : handleCreateBook}
+        >
+          <label className="font-medium">
+            Nome:{' '}
+            <input
+              placeholder="Nome do livro"
+              className="rounded-lg p-2 hover:bg-blue-50 focus:bg-blue-50"
+              type="text"
+              name="name"
+              onChange={handleChange}
+              value={books.name}
+            />
+          </label>
+          <label className="font-medium">
+            Data de lançamento:{' '}
+            <input
+              className="rounded-lg p-2 hover:bg-blue-50 focus:bg-blue-50"
+              type="date"
+              name="launchDate"
+              onChange={handleChange}
+              value={books.launchDate}
+            />
+          </label>
+          <label className="font-medium">
+            Categoria:{' '}
+            <input
+              placeholder="Categoria do livro"
+              className="rounded-lg p-2 hover:bg-blue-50 focus:bg-blue-50"
+              type="text"
+              name="category"
+              onChange={handleChange}
+              value={books.category}
+            />
+          </label>
+          <label className="flex items-center gap-2 font-medium">
+            Descrição:{' '}
+            <textarea
+              placeholder="Descrição do livro"
+              className="rounded-lg p-2 hover:bg-blue-50 focus:bg-blue-50"
+              name="description"
+              onChange={handleChange}
+              value={books.description}
+              maxLength={100}
+              cols={30}
+            />
+          </label>
+          <label className="font-medium">Autores: </label>
+          <select onChange={handleChange} value={books.author} name="author">
+            {filteredAuthors &&
+              filteredAuthors?.map(({ id, name }) => (
+                <option key={id} value={name}>
+                  {name}
+                </option>
+              ))}
+          </select>
+          <button
+            type="button"
+            className="rounded-lg bg-blue-200 p-2 hover:bg-blue-300"
+            onClick={handleAuthor}
+          >
+            Adicionar Autor
+          </button>
+          <table className="min-w-full border border-gray-300 bg-white">
+            <thead>
+              <tr>
+                <th className="bg-green-200 px-4 py-2 text-center font-semibold">
+                  Autores selecionados
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-        {edit && <button>Editar</button>}
-        {!edit && <button>Criar Book</button>}
-      </form>
-      <button onClick={toogleShowBooks}>Exibit books</button>
+            </thead>
+            <tbody>
+              {authorList?.map((author) => (
+                <tr key={author}>
+                  <td className="border-b px-10 py-4 text-center">{author}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {edit && <button>Editar</button>}
+          {!edit && (
+            <button className="rounded-lg bg-blue-200 p-2 hover:bg-blue-300">
+              Criar Book
+            </button>
+          )}
+        </form>
+        <button
+          className="mt-4 rounded-lg bg-blue-200 p-2 hover:bg-blue-300"
+          onClick={toogleShowBooks}
+        >
+          Exibit books
+        </button>
+      </div>
       {showBooks && <TableBooks />}
       <Footer />
     </div>

@@ -1,7 +1,6 @@
 'use client';
 import { api } from '@/lib/api';
 import { FormEvent, useState } from 'react';
-import styles from './authors.module.css';
 import Footer from '@/components/Footer';
 import TableAuthors from '@/components/TableAuthors';
 import { TargetChange } from '@/interface/interface';
@@ -42,37 +41,63 @@ function Authors() {
   };
 
   return (
-    <main className={styles.mainAuthors}>
-      <div>
+    <main className="flex flex-col items-center justify-center">
+      <h1 className="w-screen bg-gray-300 p-5 text-center text-5xl font-bold">
         Criar autores
-        <form onSubmit={handleCreateAuthor}>
-          <label>
+      </h1>
+      <div className="flex w-1/3 flex-col items-center justify-center bg-green-200 p-5">
+        <form
+          onSubmit={handleCreateAuthor}
+          className="flex w-full flex-col items-center justify-center gap-3"
+        >
+          <label className="font-medium">
             Nome:{' '}
             <input
+              placeholder="Digite o nome do autor"
+              className="rounded-lg p-2 hover:bg-blue-50 focus:bg-blue-50"
               type="text"
               name="name"
               onChange={handleChange}
               value={controlInput.name}
             />
           </label>
-          <label>
-            Birth date:{' '}
-            <input type="date" name="birth" onChange={handleChange} />
-          </label>
-          <label>
-            Bio{' '}
+          <label className="font-medium">
+            Nascimento:{' '}
             <input
-              type="text"
+              placeholder="Digite a data de nascimento"
+              className="rounded-lg p-2 hover:bg-blue-50 focus:bg-blue-50"
+              type="date"
+              name="birth"
+              onChange={handleChange}
+            />
+          </label>
+          <label className="flex items-center gap-2 font-medium">
+            Bio{' '}
+            <textarea
+              placeholder="Digite a biografia do autor"
+              className="rounded-lg p-2 hover:bg-blue-50 focus:bg-blue-50"
               name="bio"
               onChange={handleChange}
               value={controlInput.bio}
+              maxLength={100}
+              cols={30}
             />
           </label>
-          <button type="submit">Criar Autor</button>
+          <button
+            type="submit"
+            className="rounded-lg bg-blue-200 p-2 hover:bg-blue-300"
+          >
+            Criar Autor
+          </button>
         </form>
       </div>
-      <div>
-        <button onClick={handleViewAuthors}>Exibir autores cadastrados</button>
+      <div className="flex flex-col items-center justify-center">
+        <button
+          className="m-4 rounded-lg bg-blue-200 p-4 hover:bg-blue-300"
+          onClick={handleViewAuthors}
+        >
+          Exibir autores cadastrados
+        </button>
         {authorsList && <TableAuthors authors={authorsList} />}
       </div>
       <Footer />
