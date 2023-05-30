@@ -1,5 +1,4 @@
 import { FastifyInstance } from 'fastify';
-import { prisma } from '../lib/prisma';
 import { booksController } from '../controllers/books.controllers';
 
 export async function booksRoutes(app: FastifyInstance) {
