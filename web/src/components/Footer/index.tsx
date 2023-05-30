@@ -17,14 +17,20 @@ const Footer = () => {
   }, [pathName]);
 
   return (
-    <div>
+    <div className="m-4 flex content-center items-center justify-center">
       <div>
-        <Link href="/">
+        <Link
+          className="m-2 rounded-lg bg-blue-200 p-2 hover:bg-blue-300"
+          href="/"
+        >
           <button>Voltar a página principal</button>
         </Link>
       </div>
       <div>
-        <Link href={`/${myNextLoc}`}>
+        <Link
+          className="m-2 rounded-lg bg-blue-200 p-2 hover:bg-blue-300"
+          href={`/${myNextLoc}`}
+        >
           <button>{`Ir para ${myNextLoc}`}</button>
         </Link>
       </div>
