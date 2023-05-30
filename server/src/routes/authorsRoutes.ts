@@ -1,39 +1,10 @@
-import { FastifyInstance } from "fastify";
-import { prisma } from "../lib/prisma";
-import { getAllBooks } from "../controllers/books.controllers";
+import { FastifyInstance } from 'fastify';
+import { authorsController } from '../controllers/authors.controllers';
 
-export async function authorsRoutes(app:FastifyInstance) {
-  app.get('/authors', async(req, res) => getAllBooks(req, res));
+export async function authorsRoutes(app: FastifyInstance) {
+  app.get('/authors', authorsController.getAllAuthors);
 
-  app.get('/authors/list', async() => {
-    try {
-      const author = await prisma.authors.findMany({
-        select: {
-          id: true,
-          name: true,
-        }
-      });
-      return author
-    } catch (error) {
-        console.error(error.message);
-      }
-  });
+  app.get('/authors/list', authorsController.getAllAuthorsIdAndName);
 
-  app.post('/authors', async (req) => {
-    try {
-    const { name, birth, bio } = req.body as { name: string, birth: Date, bio: string }
-    const author = await prisma.authors.create({
-      data: {
-        name,
-        birth,
-        bio,
-      },
-    });
-
-    return author;
-  }
-  catch (error) {
-    console.error(error.message);
-  }
-});
+  app.post('/authors', authorsController.createAuthor);
 }
