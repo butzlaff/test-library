@@ -64,7 +64,6 @@ export async function deleteBook(req: FastifyRequest, res: FastifyReply) {
       id: newId,
     },
   });
-
   return books;
 }
 

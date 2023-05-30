@@ -17,10 +17,6 @@ app.setErrorHandler((error, req: FastifyRequest, res: FastifyReply) => {
   res.status(500).send({ error: 'Something went wrong' });
 });
 
-app
-  .listen({    port: 3333,    host: '0.0.0.0'  })
-  .then(() => {
-    console.log('📚 HTTP server running on HTTP://localhost:3333');
-  })
-
-;
+app.listen({ port: 3333, host: '0.0.0.0' }).then(() => {
+  console.log('📚 HTTP server running on HTTP://localhost:3333');
+});
