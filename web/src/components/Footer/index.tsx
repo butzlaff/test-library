@@ -6,13 +6,16 @@ import React, { useEffect, useState } from 'react';
 const Footer = () => {
   const pathName = usePathname();
   const [myNextLoc, setMyNextLoc] = useState<string | null>(null);
+  const [path, setPath] = useState<string | null>(null);
 
   useEffect(() => {
     if (pathName === '/authors') {
       setMyNextLoc('books');
+      setPath('Livros');
     }
     if (pathName === '/books') {
       setMyNextLoc('authors');
+      setPath('Autores');
     }
   }, [pathName]);
 
@@ -31,7 +34,7 @@ const Footer = () => {
           className="m-2 rounded-lg bg-blue-200 p-2 hover:bg-blue-300"
           href={`/${myNextLoc}`}
         >
-          <button>{`Ir para ${myNextLoc}`}</button>
+          <button>{`Ir para ${path}`}</button>
         </Link>
       </div>
     </div>

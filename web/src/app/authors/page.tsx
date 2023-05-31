@@ -33,6 +33,12 @@ function Authors() {
     const birth = new Date(controlInput.birth).toISOString();
 
     await api.post('/authors', { name, birth, bio });
+
+    setControlInput({
+      name: '',
+      birth: '',
+      bio: '',
+    });
   };
 
   const handleViewAuthors = async () => {
@@ -43,9 +49,9 @@ function Authors() {
   return (
     <main className="flex flex-col items-center justify-center">
       <h1 className="w-screen bg-gray-300 p-5 text-center text-5xl font-bold">
-        Criar autores
+        Autores
       </h1>
-      <div className="flex w-1/3 flex-col items-center justify-center bg-green-200 p-5">
+      <div className="flex w-full flex-col items-center justify-center bg-green-200 p-5">
         <form
           onSubmit={handleCreateAuthor}
           className="flex w-full flex-col items-center justify-center gap-3"
@@ -79,7 +85,7 @@ function Authors() {
               name="bio"
               onChange={handleChange}
               value={controlInput.bio}
-              maxLength={100}
+              maxLength={500}
               cols={30}
             />
           </label>
@@ -87,17 +93,17 @@ function Authors() {
             type="submit"
             className="rounded-lg bg-blue-200 p-2 hover:bg-blue-300"
           >
-            Criar Autor
+            CADASTRAR AUTOR
           </button>
         </form>
-      </div>
-      <div className="flex flex-col items-center justify-center">
         <button
           className="m-4 rounded-lg bg-blue-200 p-4 hover:bg-blue-300"
           onClick={handleViewAuthors}
         >
-          Exibir autores cadastrados
+          VER AUTORES
         </button>
+      </div>
+      <div className="flex flex-col items-center justify-center">
         {authorsList && <TableAuthors authors={authorsList} />}
       </div>
       <Footer />

@@ -74,8 +74,8 @@ const TableBooks = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <div className="flex w-1/3 flex-col items-center justify-center bg-green-200 p-5">
+    <div className="mt-2 flex flex-col items-center justify-center">
+      <div className="flex min-w-full flex-col items-center justify-center rounded-t-lg bg-green-200 p-5">
         <label className="font-medium">
           Pesquisar livro por autor:{' '}
           <input
