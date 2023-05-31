@@ -1,5 +1,20 @@
-# test-library
+## Getting Started
 
-# To start project:
-# first you need go to /server and run the command: npm run dev
-# after you need go to /web and run the command: npm run dev
+#First, run the development server:
+go to /server
+
+```bash
+npm install 
+npm run dev
+
+# this, will start the server at
+[http://localhost:3333](http://localhost:3333) 
+
+# after, go to /web/
+
+```bash
+npm install 
+npm run dev
+
+# this, will start the server at
+[http://localhost:3000](http://localhost:3000) 
