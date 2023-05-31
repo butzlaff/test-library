@@ -210,7 +210,7 @@ function Books() {
                 name="description"
                 onChange={handleChange}
                 value={books.description}
-                maxLength={100}
+                maxLength={500}
                 cols={30}
               />
             </label>

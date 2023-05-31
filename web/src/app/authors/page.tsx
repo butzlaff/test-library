@@ -33,6 +33,12 @@ function Authors() {
     const birth = new Date(controlInput.birth).toISOString();
 
     await api.post('/authors', { name, birth, bio });
+
+    setControlInput({
+      name: '',
+      birth: '',
+      bio: '',
+    });
   };
 
   const handleViewAuthors = async () => {
@@ -79,7 +85,7 @@ function Authors() {
               name="bio"
               onChange={handleChange}
               value={controlInput.bio}
-              maxLength={100}
+              maxLength={500}
               cols={30}
             />
           </label>
