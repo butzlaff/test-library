@@ -106,7 +106,7 @@ function Authors() {
       <div className="flex flex-col items-center justify-center">
         {authorsList && <TableAuthors authors={authorsList} />}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 }

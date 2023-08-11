@@ -7,8 +7,8 @@ type Book = {
   category: string;
   description: string;
   launchDate: string;
-  authors: [{ id: number | null, name: string; }];
-}
+  authors: [{ id: number | null; name: string }];
+};
 
 interface BookState {
   edit: boolean;
@@ -37,9 +37,9 @@ const bookSlice = createSlice({
     },
     resetBooks: (state) => {
       state.edit = false;
-      state.book = {...initialState.book};
-    }
-  }
+      state.book = { ...initialState.book };
+    },
+  },
 });
 
 export const { editBooks, resetBooks } = bookSlice.actions;

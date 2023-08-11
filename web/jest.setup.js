@@ -3,5 +3,6 @@
 
 // Used for __tests__/testing-library.js
 // Learn more: https://github.com/testing-library/jest-dom
-import './__mocks__/routerMock'
+// import './__mock__/routerMock'
+import './__tests__/__mocks__/next/link'
 import '@testing-library/jest-dom/extend-expect'
